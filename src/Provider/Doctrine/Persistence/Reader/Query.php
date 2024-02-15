@@ -14,6 +14,7 @@ use DH\Auditor\Provider\Doctrine\Persistence\Reader\Filter\FilterInterface;
 use DH\Auditor\Provider\Doctrine\Persistence\Reader\Filter\RangeFilter;
 use DH\Auditor\Provider\Doctrine\Persistence\Reader\Filter\SimpleFilter;
 use DH\Auditor\Tests\Provider\Doctrine\Persistence\Reader\QueryTest;
+use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Result;
@@ -109,7 +110,7 @@ final class Query
 
         try {
             $queryBuilder
-                ->add('select', 'COUNT(id)', false)
+                ->select( 'COUNT(id)')
                 ->resetOrderBy()
                 ->setMaxResults(null)
                 ->setFirstResult(0)
@@ -277,8 +278,7 @@ final class Query
 
                     foreach ($data['params'] as $name => $value) {
                         if (\is_array($value)) {
-                            // TODO: replace Connection::PARAM_STR_ARRAY with ArrayParameterType::STRING when dropping support of doctrine/dbal < 3.6
-                            $queryBuilder->setParameter($name, $value, Connection::PARAM_STR_ARRAY); // @phpstan-ignore-line
+                            $queryBuilder->setParameter($name, $value, ArrayParameterType::STRING);
                         } else {
                             $queryBuilder->setParameter($name, $value);
                         }

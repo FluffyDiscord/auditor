@@ -12,12 +12,12 @@
   ],
   "require": {
     "php": ">=8.2",
-    "doctrine/dbal": "^2.13.1|^3.2",
-    "doctrine/orm": "^2.13",
-    "symfony/cache": "^5.4|^6.0|^7.0",
-    "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
-    "symfony/lock": "^5.4|^6.0|^7.0",
-    "symfony/options-resolver": "^5.4|^6.0|^7.0"
+    "doctrine/dbal": "^4",
+    "doctrine/orm": "^3",
+    "symfony/cache": "^7.0",
+    "symfony/event-dispatcher": "^7.0",
+    "symfony/lock": "^7.0",
+    "symfony/options-resolver": "^7.0"
   },
   "suggest": {
     "damienharper/auditor-bundle": "Integrate auditor library in your Symfony projects."
@@ -36,7 +36,7 @@
     "gedmo/doctrine-extensions": "^3.0",
     "doctrine/data-fixtures": "^1.5.3",
     "phpunit/phpunit": "^9.0",
-    "symfony/var-dumper": "^5.4|^6.0|^7.0"
+    "symfony/var-dumper": "^7.0"
   },
   "scripts": {
     "test": "php -d pcov.enabled=1 ./vendor/bin/phpunit --colors=always",
